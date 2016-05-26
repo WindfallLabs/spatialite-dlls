@@ -1,2 +1,2 @@
-mod_spatialite*
+mod_spatialite*/
 *.7z
