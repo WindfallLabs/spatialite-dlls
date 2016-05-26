@@ -9,7 +9,7 @@ into a .zip file if 7z.exe is found.
 
 USAGE:
 $ python helper_scripts/get_spatialite.py
-    --ignore_version: force downloads the binary files regardless of version
+    --ignore-version: force downloads the binary files regardless of version
 """
 
 import argparse
@@ -112,6 +112,9 @@ def main():
         rezip.write(os.path.join(to_zip, fname))
     rezip.close()
 
+    os.remove("bin.7z")
+    shutil.rmtree(mod_folder)
+
     # TODO: automate the update to github process
 
 
@@ -124,7 +127,7 @@ if __name__ == "__main__":
     argp = argparse.ArgumentParser()
 
     # Override use of "spatialite_version.txt" to test for version
-    argp.add_argument("--ignore_version", action="store_true",
+    argp.add_argument("--ignore-version", action="store_true",
                       dest="ignore_version", default=False,
                       help="Force download")
 
